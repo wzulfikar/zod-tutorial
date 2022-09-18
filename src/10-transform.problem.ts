@@ -8,7 +8,7 @@ const StarWarsPerson = z
     name: z.string(),
   })
   .transform((data) => ({
-    name: data.name,
+    ...data,
     nameAsArray: data.name.split(" "),
   }));
 //^ 🕵️‍♂️
