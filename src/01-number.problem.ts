@@ -5,10 +5,7 @@ import { z } from "zod";
 //       ^ 🕵️‍♂️
 
 export const toString = (num: unknown) => {
-  if (typeof num !== "number") {
-    throw new Error("Expected number, received string");
-  }
-  return String(num);
+  return z.number().parse(num).toString();
 };
 
 // TESTS
