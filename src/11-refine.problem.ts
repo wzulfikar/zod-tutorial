@@ -8,10 +8,10 @@ const Form = z
     password: z.string(),
     confirmPassword: z.string(),
   })
-  .refine(
-    (data) => data.password == data.confirmPassword,
-    "Passwords don't match"
-  );
+  .refine((data) => data.password == data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords don't match",
+  });
 //^ 🕵️‍♂️
 
 export const validateFormInput = (values: unknown) => {
