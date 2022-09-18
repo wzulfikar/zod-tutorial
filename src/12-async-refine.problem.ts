@@ -12,15 +12,10 @@ const doesStarWarsPersonExist = async (id: string) => {
   return Boolean(data?.name);
 };
 
-const Form = z
-  .object({
-    id: z.string(),
-    //           ^ 🕵️‍♂️
-  })
-  .refine(({ id }) => doesStarWarsPersonExist(id), {
-    path: ["id"],
-    message: "Not found",
-  });
+const Form = z.object({
+  id: z.string().refine(doesStarWarsPersonExist, "Not found"),
+  //           ^ 🕵️‍♂️
+});
 
 export const validateFormInput = async (values: unknown) => {
   const parsedData = await Form.parseAsync(values);
