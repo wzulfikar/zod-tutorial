@@ -6,23 +6,20 @@ import { Equal, Expect } from "./helpers/type-utils";
  * while also making sure the cases don't go red!
  */
 
-const UUID = {
+const Base = z.object({
   id: z.string().uuid(),
-};
+});
 
-const User = z.object({
-  ...UUID,
+const User = Base.extend({
   name: z.string(),
 });
 
-const Post = z.object({
-  ...UUID,
+const Post = Base.extend({
   title: z.string(),
   body: z.string(),
 });
 
-const Comment = z.object({
-  ...UUID,
+const Comment = Base.extend({
   text: z.string(),
 });
 
