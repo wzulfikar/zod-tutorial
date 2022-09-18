@@ -6,6 +6,7 @@ import { z } from "zod";
 interface MenuItem {
   link: string;
   label: string;
+  children?: MenuItem[];
 }
 
 const MenuItem: z.ZodType<MenuItem> = z.lazy(() =>
