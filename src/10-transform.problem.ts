@@ -13,7 +13,9 @@ const StarWarsPerson = z
   }));
 //^ 🕵️‍♂️
 
-type StarWarsPerson = z.infer<typeof StarWarsPerson>;
+type StarWarsPersonInput = z.input<typeof StarWarsPerson>;
+
+type StarWarsPersonOutput = z.infer<typeof StarWarsPerson>;
 
 const StarWarsPeopleResults = z.object({
   results: z.array(StarWarsPerson),
